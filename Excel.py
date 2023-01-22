@@ -49,7 +49,7 @@ user_file = st.sidebar.file_uploader("Upload your File:")
 if user_file is not None:
     try:
         with st.spinner("Uploading your File..."):
-            df = pd.read_csv(user_file, dtype=str)
+            df = pd.read_csv(user_file, dtype=str, on_bad_lines='skip')
 
             df = df[df['Which Kingdomcity location are you from?']=='Kuala Lumpur, Malaysia']
             df = df.dropna(axis=1, how='all')
